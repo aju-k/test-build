@@ -1,0 +1,23 @@
+name: Run Datadog Synthetic tests
+
+run-name: ${{ github.actor }} action triggered
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: macOS
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    - run: npm install
+    - run: npm test
+    
+
