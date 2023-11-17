@@ -1,4 +1,4 @@
-name: Run Datadog Synthetic tests
+name: Test Actions
 
 run-name: ${{ github.actor }} action triggered
 
