@@ -20,13 +20,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - run: |
+          cd packages/app
       - run: npm install
       - run: npm i react-canvas-draw --legacy-peer-deps
       - run: npm test
-      - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure() # run this step even if previous step failed
+      - uses: artiomtr/jest-coverage-report-action@v1.3
         with:
-          name: JEST Tests # Name of the check run which will be created
-          path: reports/jest-*.xml # Path to test results
-          reporter: jest-junit
+          github-token: ${{ secrets.GITHUB_TOKEN }}
