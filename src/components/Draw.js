@@ -4,6 +4,7 @@ import CanvasDraw from "react-canvas-draw";
 const Draw = () => {
   const [canvas, setBrush] = useState("#FCA5A5");
   const [brush, setThick] = useState(50);
+  const [data, setData] = useState();
   const canvasRef = useRef();
 
   const style = {
@@ -11,15 +12,24 @@ const Draw = () => {
     background: canvas,
     marginLeft: "50%",
   };
+
   return (
-    <div className="container">
+    <div className="container" style={{ display: "flex" }}>
       <CanvasDraw
+        className="canvas"
         ref={canvasRef}
         brushRadius={brush}
-        canvasWidth={1200}
-        canvasHeight={1200}
+        canvasWidth={500}
+        canvasHeight={500}
       />
-      <div class="actions" style={{ display: "flex" }}>
+      <div className="actions">
+        <button
+          onClick={() => {
+            setData(canvasRef.current.getSaveData());
+          }}
+        >
+          Save
+        </button>
         <button
           onClick={() => {
             canvasRef.current.undo();
@@ -60,6 +70,12 @@ const Draw = () => {
             setThick(event.target.value);
           }}
         />
+      </div>
+      <div>
+        Saved data =
+        <label data-testid="dataValue">
+          {data ? Object.keys(data).length : ""}
+        </label>
       </div>
     </div>
   );
