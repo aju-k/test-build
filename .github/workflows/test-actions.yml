@@ -22,7 +22,7 @@ jobs:
           node-version: 16
       - run: npm install
       - run: npm i react-canvas-draw --legacy-peer-deps
-      - run: npm test -- --coverage --ci
+      - run: npm test --ci --json --coverage --testLocationInResults --outputFile=report.json
       - uses: artiomtr/jest-coverage-report-action@v2
         with:
           github-token: ${{ secrets.GIT_TOKEN }}
