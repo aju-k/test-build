@@ -25,4 +25,4 @@ jobs:
       - run: npm test
       - uses: artiomtr/jest-coverage-report-action@v1.3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GIT_TOKEN }}
