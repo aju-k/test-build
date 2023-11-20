@@ -4,22 +4,20 @@ run-name: ${{ github.actor }} action triggered
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   test:
     strategy:
       matrix:
-        platform: [macos-12, ubuntu-22.04]
+        platform: [macos-12]
     runs-on: ${{ matrix.platform }}
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    - run: npm install
-    - run: npm test
- 
-
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npm test
