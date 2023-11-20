@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --ci --json --coverage --testLocationInResults --outputFile=report.json",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
